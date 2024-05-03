@@ -5,8 +5,6 @@
 currentUser=$(/usr/sbin/scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ && ! /loginwindow/ {print $3}') 
 
 #make folder in desktop of logged in user
-mkdir -p /Users/currentUser/Desktop/Test_Folder
+sudo mkdir -p /Users/currentUser/Desktop/Test_Folder 
 
-#make the commands executable in terminal
-chmod +x Make_Folder
-./Make_Folder
+#check if the folder has been made
