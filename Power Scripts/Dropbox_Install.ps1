@@ -1,4 +1,4 @@
-# Name of URL
+# Name of URL to download Dropbox
 $URL="https://dropbox.com/download?plat=win"
 
 #Name of current userprofile
@@ -8,10 +8,12 @@ $User=$env:USERPROFILE
 $env:USERDNSDOMAIN
 
 # Location where installer will be installed and run from
-# should be to an Admin account to ensure it is installed on all users
-$Location="C:\Users\cpsit\Downloads\DropboxInstaller.exe"
+# depends on logged in
+$Location="$User\Downloads\DropboxInstaller.exe"
 
-#download file to Downloads folder
+#$Location="C:\Users\cpsit\Downloads\DropboxInstaller.exe"
+
+#download file to specified location
 Invoke-WebRequest -Uri $URL -Outfile $Location
 
 #open and run Dropbox installer
@@ -37,3 +39,7 @@ Cookham\JerryG is a local administrator
 MEDF-BIOC-05500
 
 $env:USERDNSDOMAIN
+
+# https://stackoverflow.com/questions/73534033/how-to-use-powershell-to-get-all-users-profiles-and-assign-a-value
+#gives list of user profiles and paths to profiles
+$paths=Get-WMIObject -ClassName Win32_UserProfile -Filter "special=false and localpath like 'C:\\users\\%'" -Property localpath |select -ExpandProperty localpath
