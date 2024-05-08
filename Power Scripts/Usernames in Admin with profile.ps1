@@ -61,6 +61,22 @@ function In-List {
         }
 }
 
+#returns if list is empty, false otherwise
+function Empty? {
+    param (
+        [# Given list to check
+        [Parameter(Mandatory=$true)]
+        [arrayList]
+        $list]
+    )
+    if ($list -eq 0) {
+        $true 
+    }
+    else {
+        $false
+    }
+}
+
 
 #return list objects in both $list1 and $list2
 # if none, returns nothing
@@ -84,9 +100,7 @@ function In-Both {
                 #add names in both $Admins and $Usernames into $In_Admins_Usernames
                 $List_Both.Add($name)
         }
-        elseif ($List_Both.Length -eq 0) {
-            Write-Host "No objects in both lists."
-        }
      } 
+        Empty? -list $List_Both
         Write-Host $List_Both
 }
