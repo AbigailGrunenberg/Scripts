@@ -24,8 +24,9 @@ $Usernames=new-object system.collections.arrayList
 
 #returns list of user profiles
 function Get-Profiles {
-  foreach ($user in $AllUsers) {
-  $Usernames.Add($user.Name)
+    [CmdletBinding()]
+    foreach ($user in $AllUsers) {
+    $Usernames.Add($user.Name)
   }
 }
 
@@ -39,7 +40,8 @@ if none, Write-Host "No Administrators with a User Profile"
 
 #check if item is in given list
 #helper function for In-Both
-function In-List {
+function InList {
+    [CmdletBinding()]
     param (
         [#item
         [Parameter(Mandatory=$true)]
@@ -52,17 +54,16 @@ function In-List {
         $list]
     )
         if ($List.Contains($item)) {
-            Write-Host "Item in List"
             $true 
         }
         else {
-            Write-Host "Item not in List"
             $false
         }
 }
 
 #returns if list is empty, false otherwise
 function Empty? {
+    [CmdletBinding()]
     param (
         [# Given list to check
         [Parameter(Mandatory=$true)]
@@ -80,7 +81,8 @@ function Empty? {
 
 #return list objects in both $list1 and $list2
 # if none, returns nothing
-function In-Both {
+function InBoth {
+    [CmdletBinding()]
     param (
         [# list1
         [Parameter(Mandatory=$true)]
@@ -93,14 +95,14 @@ function In-Both {
         $list2]
     )
     #list to store objects in both $list1 and $list2
-    $List_Both=new-object system.collections.arrayList
+    $listBoth=new-object system.collections.arrayList
     foreach ($object in $list1) {
-        if (In-List -item $object -list $list2)
+        if (InList -item $object -list $list2)
             {
-                #add names in both $Admins and $Usernames into $In_Admins_Usernames
-                $List_Both.Add($name)
+                #add names in both $list1 and $list2 to $List_Both
+                $listBoth.Add($name)
         }
      } 
-        Empty? -list $List_Both
-        Write-Host $List_Both
+        Empty? -list $listBoth
+        Write-Host $listBoth
 }
