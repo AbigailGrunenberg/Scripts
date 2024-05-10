@@ -1,3 +1,5 @@
+# Simplified dropbox insatllation script 
+
 # Name of URL to download Dropbox
 $URL="https://dropbox.com/download?plat=win"
 

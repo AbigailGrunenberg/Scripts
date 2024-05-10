@@ -49,7 +49,7 @@ function Empty? {
   param (
       #Given list to check
       [Parameter(Mandatory=$true)]
-      [arrayList]
+      [array]
       $list
   )
   if ($list -eq 0) {
@@ -68,14 +68,14 @@ function Empty? {
 function InBoth {
   [CmdletBinding()]
   param (
-      # list1
+      #list1
       [Parameter(Mandatory=$true)]
-      [arrayList]
+      [array]
       $list1,
 
       #list2
       [Parameter(Mandatory=$true)]
-      [arrayList]
+      [array]
       $list2
   )
 
@@ -86,22 +86,42 @@ function InBoth {
               $listBoth.Add($object)
       }
    } 
-      #Empty? -list $listBoth
       Write-Host $listBoth
 }
 
+#check if there are users in both $Admins and $Usernames
+#if there are, choose first one and start the installation
+#if none, exit
+function Main {
+    param (
+        #list 
+        [Parameter(Mandatory=$true)]
+        [array]
+        $list
+    ) 
 
-#return list of objects in both $Admins and $Usernames
-InBoth -list1 $Admins -list2 $Usernames
+    if (Empty? -list $list) {
+        Write-Host "Could not finish installation"
+        exit
+    }
+    else {
+        #return list of objects in both $Admins and $Usernames
+        InBoth -list1 $Admins -list2 $Usernames
 
-#Get one unsername that is in both admins and usernames
-$User = "C:\Users\" + $listBoth[0]
+        #Get one unsername that is in both admins and usernames
+        $User = "C:\Users\" + $listBoth[0]
 
-# Location where installer will be installed and run from
-$Location=$User + "\Downloads\DropboxInstaller.exe"
+        # Location where installer will be installed and run from
+        $Location=$User + "\Downloads\DropboxInstaller.exe"
 
-#download file to specified location
-Invoke-WebRequest -Uri $URL -Outfile $Location
+        #download file to specified location
+        Invoke-WebRequest -Uri $URL -Outfile $Location
 
-#open and run Dropbox installer
-& $Location
+        #open and run Dropbox installer
+        & $Location 
+    }
+
+}
+
+#Start installation
+Main -list $listBoth
