@@ -1,5 +1,5 @@
-# Name of URL to download Dropbox
-$URL="https://dropbox.com/download?plat=win"
+# Name of URL to download MSOffice
+$URL="https://go.microsoft.com/fwlink/?linkid=2264705&clcid=0x409&culture=en-us&country=us"
 
 # list of administrator names
 $Admins=net localGroup Administrators
@@ -7,18 +7,8 @@ $Admins=net localGroup Administrators
 #List of user objects
 $AllUsers=Get-ChildItem -Path "C:\Users"
 
-#Empty list, store list of usernames as objects 
-$Usernames=new-object system.collections.arrayList
-
 #returns list of user profiles
-function Get-Profiles {
-  foreach ($user in $AllUsers) {
-  $Usernames.Add($user.Name)
-  }
-}
-
-#activate command
-Get-Profiles
+$Usernames = $AllUsers | select Names
 
 #check if item is in given list
 #helper function for In-Both
@@ -82,7 +72,7 @@ function InBoth {
   foreach ($object in $list1) {
       if (InList -item $object -list $list2)
           {
-              #add names in both $list1 and $list2 to $List_Both
+              #add names in both $list1 and $list2 to $listBoth
               $listBoth.Add($object)
       }
    } 
@@ -106,7 +96,7 @@ function Main {
     }
     else {
         Write-Host "Starting installation"
-        
+
         #return list of objects in both $Admins and $Usernames
         InBoth -list1 $Admins -list2 $Usernames
 
@@ -114,13 +104,14 @@ function Main {
         $User = "C:\Users\" + $listBoth[0]
 
         # Location where installer will be installed and run from
-        $Location=$User + "\Downloads\DropboxInstaller.exe"
+        $Location=$User + "\Downloads\MSOffice.exe"
 
         #download file to specified location
         Invoke-WebRequest -Uri $URL -Outfile $Location
 
         #open and run Dropbox installer
-        & $Location 
+        & $Location
+        
     }
 
 }
