@@ -1,5 +1,5 @@
 #script to find all installed applications on computer
-#Get-InstalledApps etreived from: https://serverfault.com/questions/1111419/how-to-get-a-complete-list-of-all-installed-software-via-powershell
+#Get-InstalledApps retreived from: https://serverfault.com/questions/1111419/how-to-get-a-complete-list-of-all-installed-software-via-powershell
 #edited slightly from original
 
 function Get-InstalledApps {
@@ -43,17 +43,15 @@ $InstalledApps = Get-InstalledApps | select DisplayName | Out-String
 
 #returns true if the application is already installed, false otherwise
 function Installed? {
-    param (
-        [string] $AppName = $AppName
-    )
-
     if ($InstalledApps.Contains($AppName)) {
-        Write-Host "App already installed on device"
+        ms console /server:localhost "App already installed on device, cancelling installation."
         $true
+        exit
     }
     else {
-        Write-Host "App not installed on device"
+        ms console / server:localhost "App not installed on device."
         $false
+        continue
     }
 
 }
