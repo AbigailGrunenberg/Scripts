@@ -1,4 +1,3 @@
-
 #Get-InstalledApps function retreived from: https://serverfault.com/questions/1111419/how-to-get-a-complete-list-of-all-installed-software-via-powershell
 #edited slightly from original
 
