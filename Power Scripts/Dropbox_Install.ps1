@@ -48,12 +48,12 @@ $InstalledApps = Get-InstalledApps | select DisplayName | Out-String
 function Installed? {
     [CmdletBinding()]
     if ($InstalledApps.Contains($AppName)) {
-        ms console /server:localhost "App already installed on device, cancelling installation."
+        msg console /server:localhost "App already installed on device, cancelling installation."
         $true
         exit
     }
     else {
-        ms console / server:localhost "App not installed on device, continueing with installation."
+        msg console / server:localhost "App not installed on device, continueing with installation."
         $false
         continue
     }
@@ -75,15 +75,10 @@ $AllUsers=Get-ChildItem -Path "C:\Users"
 #Empty list, store list of usernames as objects 
 $Usernames=new-object system.collections.arrayList
 
-#returns list of user profiles
-function Get-Profiles {
-  foreach ($user in $AllUsers) {
-  $Usernames.Add($user.Name)
-  }
+#adds users' names to $Usernames
+foreach ($user in $AllUsers) {
+    $Usernames.Add($user.name)
 }
-
-#activate command
-Get-Profiles
 
 #check if item is in given list
 #helper function for In-Both
@@ -147,7 +142,7 @@ function InBoth {
   foreach ($object in $list1) {
       if (InList -item $object -list $list2)
           {
-              #add names in both $list1 and $list2 to $List_Both
+              #add names in both $list1 and $list2 to $listBoth
               $listBoth.Add($object)
       }
    } 
@@ -166,12 +161,10 @@ function Main {
     ) 
 
     if (Empty? -list $list) {
-        Write-Host "Could not finish installation"
+        msg console /server:localhost "Could not finish installation, cancelling installation."
         exit
     }
     else {
-        Write-Host "Starting installation"
-        
         #return list of objects in both $Admins and $Usernames
         InBoth -list1 $Admins -list2 $Usernames
 

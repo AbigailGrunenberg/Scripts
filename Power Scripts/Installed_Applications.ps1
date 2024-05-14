@@ -44,14 +44,14 @@ $InstalledApps = Get-InstalledApps | select DisplayName | Out-String
 #returns true if the application is already installed, false otherwise
 function Installed? {
     if ($InstalledApps.Contains($AppName)) {
-        ms console /server:localhost "App already installed on device, cancelling installation."
+        msg console /server:localhost "App already installed on device, cancelling installation."
         $true
         exit
     }
     else {
-        ms console / server:localhost "App not installed on device."
+        msg console / server:localhost "App not installed on device."
         $false
         continue
     }
-
+    
 }
