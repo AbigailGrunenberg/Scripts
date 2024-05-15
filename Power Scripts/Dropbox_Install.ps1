@@ -75,6 +75,7 @@ $AllUsers=Get-ChildItem -Path "C:\Users"
 $Usernames=new-object system.collections.arrayList
 
 #adds users' names to $Usernames
+#list of strings
 foreach ($user in $AllUsers) {
     $Usernames.Add($user.name)
 }
@@ -123,7 +124,7 @@ function Empty? {
   $listBoth=new-object system.collections.arrayList
 
 #return list objects in both $list1 and $list2
-# if none, returns nothing
+#if none, returns nothing
 function InBoth {
   [CmdletBinding()]
   param (
