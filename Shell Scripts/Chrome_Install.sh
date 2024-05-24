@@ -2,15 +2,18 @@
 
 #script to install Chrome
 
-#get pkg 
-curl --output /Users/AG/Downloads/Chrome.pkg 'https://dl.google.com/chrome/mac/stable/gcem/GoogleChrome.pkg'
-printf "Chrome for Enterprise Downloaded\n"
-printf "Chrome for Enterprise Installing\n"
+#check if Chrome is already installed
+#list of applications currently on Mac
+Applications=(/Applications/*)
+ChromeLocation="/Applications/Google Chrome.app"
+AppName="Google Chrome.app"
 
-installer -pkg /Users/AG/Downloads/GoogleChrome.pkg -target /Applications
-printf "Chrome for Enterprise Installed\n"
-
-cd /Users/Shared; rm Chrome.pkg
-printf "Install package removed\n" 
-
-installer -pkg Downloads/Chrome.pkg -target /Applications
+if [[ ${Applications[@]} =~ "/Applications/$AppName" ]]
+    then
+    osascript -e 'display alert "App Installation" message "Google Chrome app already installed on device, terminiating installation."'
+    exit 0
+else   
+    curl -Ls -o /Users/Shared/Chrome.pkg 'https://dl.google.com/chrome/mac/stable/gcem/GoogleChrome.pkg'
+    installer -pkg /Users/Shared/Chrome.pkg -target /Applications
+    cd /Users/Shared; rm -v Chrome.pkg
+fi 

@@ -4,15 +4,14 @@
 #list of applications currently on Mac
 Applications=(/Applications/*)
 CiscoLocation="/Applications/Cisco/'Cisco AnyConnect Secure Mobility Client.app'"
-AppName="Cisco Secure Endpoint"
+AppName="Cisco"
 
-if [[ ${Applications[@]} =~ $AppName ]]
+if [[ ${Applications[@]} =~ "/Applications/$AppName" ]]
     then
-    echo "Array element exists"
+    echo "App already installed on device, terminating installaion request."
     exit 0
 else   
     echo "Starting installation of $AppName"
-    continue
 fi 
 
 url="https://console.amp.cisco.com/install_packages/578f304b-bd79-4b41-ae5f-c058a82b5b7d/download?product=MacProduct" # URL of where the DMG is being hosted
@@ -43,13 +42,4 @@ echo "$(date): Unmounting..."
 echo "$(date): Cleaning..."
 /bin/rm -rf /tmp/"$dmgfile"
 
-url='https://console.amp.cisco.com/install_packages/578f304b-bd79-4b41-ae5f-c058a82b5b7d/download?product=MacProduct' # URL of where the DMG is being hosted
-dmgfile="ampmac_connector.dmg" # Name of DMG file
-dmgvol="ampmac_connector" # Name of DMG volume (obtained after mounting the file)
-filename="Cisco AnyConnect Secure Mobility Client.app" # Name of file to copy
-filedestination="/Applications/" # Path to where the file should be copied to
-DMG='/Users/AG/Downloads/ampmac_connector.dmg'
-
-
-curl https://console.amp.cisco.com/install_packages/578f304b-bd79-4b41-ae5f-c058a82b5b7d/download?product=MacProduct > $DMG
 
