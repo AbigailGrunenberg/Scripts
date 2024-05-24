@@ -1,5 +1,6 @@
-#check what type of CPU is on computer
+#!/bin/bash
 
+#check what type of CPU is on computer
 
 string="here we are"
 substring="here"
@@ -30,8 +31,8 @@ CPU=$(sysctl -n machdep.cpu.brand_string)
 
 if [[ $CPU == *"Intel"* ]]
     then
-    echo "CPU is an Intel Chip"
+        echo "CPU is an Intel Chip"
     else
-    echo "CPU is a Mac chip"
+        echo "CPU is a Mac chip"
 fi
 
