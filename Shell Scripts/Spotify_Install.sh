@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #installation script to install Spotify 
+#will need to test on better iMac with MACOS 11
 
 #check if Spotify is already installed
 #list of applications currently on Mac

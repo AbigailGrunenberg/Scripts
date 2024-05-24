@@ -5,7 +5,7 @@
 
 #referenced from: https://apple.stackexchange.com/questions/73926/is-there-a-command-to-install-a-dmg
 
-#check if Chrome is already installed
+#check if Dropbox is already installed
 #list of applications currently on Mac
 Applications=(/Applications/*)
 AppName="Dropbox.app"
