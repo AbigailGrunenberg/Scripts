@@ -17,4 +17,5 @@
         <li>Chrome (.pkg)</li>
         <li>Cisco Secure Endpoint (.dmg -> .pkg)</li>
         <li>Spotify (.zip -> .app)</li>
+        <li>Dropbox (.dmg -> .app)
     </ul>
