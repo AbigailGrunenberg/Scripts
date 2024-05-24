@@ -180,7 +180,7 @@ function Main {
         #download file to specified location
         Invoke-WebRequest -Uri $URL -Outfile $Location
 
-        #open and run Dropbox installer
+        #open and run R installer
         & $Location 
     }
 
