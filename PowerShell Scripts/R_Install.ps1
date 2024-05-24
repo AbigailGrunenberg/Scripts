@@ -41,7 +41,7 @@ function Get-InstalledApps {
 #if installed, exit else continue
 
 #name of app
-$AppName = "R for Wubdiws 4.4.0"
+$AppName = "R for Windows 4.4.0"
 
 #get names of installed apps as strings
 $InstalledApps = Get-InstalledApps | select DisplayName | Out-String
