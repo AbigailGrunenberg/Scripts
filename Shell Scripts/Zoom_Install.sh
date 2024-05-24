@@ -4,15 +4,15 @@
 #list of applications currently on Mac
 Applications=(/Applications/*)
 ZoomLocation="/Applications/zoom.us.app"
-AppName="Zoom"
+AppName="zoom.us.app"
 
-if [[ ${Applications[@]} =~ $AppName ]]
+if [[ ${Applications[@]} =~ "/Applications/$AppName" ]]
     then
     osascript -e 'display alert "App Installation" message "Zoom app already installed on device, terminiating installation."'
     exit 0
 else   
-        curl -Ls -o /Users/Shared/zoom.pkg 'https://zoom.us/client/6.0.2.33403/zoomusInstallerFull.pkg'
-        installer -pkg /Users/Shared/zoom.pkg -target /
-        cd /Users/Shared; rm -v zoom.pkg
+    curl -Ls -o /Users/Shared/zoom.pkg 'https://zoom.us/client/6.0.2.33403/zoomusInstallerFull.pkg'
+    installer -pkg /Users/Shared/zoom.pkg -target /
+    cd /Users/Shared; rm -v zoom.pkg
 fi 
 
