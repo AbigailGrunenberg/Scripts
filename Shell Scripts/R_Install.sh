@@ -21,13 +21,19 @@ if [[ $CPU == *"Intel"* ]]
         #Intel chip installation
         echo "CPU is an Intel Chip"
         URL="https://cran.r-project.org/bin/macosx/big-sur-x86_64/base/R-4.4.0-x86_64.pkg"
-        curl -Ls -o /Users/Shared/R-4.4.0-x86\ 64.pkg $URL 
-        installer -pkg /Users/Shared/R-4.4.0-x86\ 64.pkg -target /Applications
+        Location=/Users/Shared/R-4.4.0-x86\ 64.pkg
+        curl -Ls -o $Location $URL 
+        installer -pkg $Location -target /Applications
+
+        rm $Location
     else
         #Mac chip installation
         echo "CPU is a Mac chip"
         URL="https://cran.r-project.org/bin/macosx/big-sur-arm64/base/R-4.4.0-arm64.pkg"
-        curl -Ls -o /Users/Shared/R-4.4.0-arm64.pkg $URL
-        installer -pkg /Users/Shared/R-4.4.0-arm64.pkg -target /Applications
+        Location=/Users/Shared/R-4.4.0-arm64.pkg
+        curl -Ls -o $Location $URL
+        installer -pkg $Location -target /Applications
+
+        rm $Location
 fi
 
