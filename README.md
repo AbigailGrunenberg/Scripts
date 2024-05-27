@@ -9,6 +9,8 @@
         <li>MSOffice (.exe)</li>
         <li>Download and install from an FTP server</li>
         <li>Cisco Secure Endpoint (.exe)</li>
+        <li>R (.exe)</li>
+        <li>RStudio (.exe) WIP</li>
     </ul>
 
 <h3>Mac: </h3> Shell Script<br>
@@ -17,5 +19,7 @@
         <li>Chrome (.pkg)</li>
         <li>Cisco Secure Endpoint (.dmg -> .pkg)</li>
         <li>Spotify (.zip -> .app)</li>
-        <li>Dropbox (.dmg -> .app)
+        <li>Dropbox (.dmg -> .app)</li>
+        <li>R (.pkg)</li>
+        <li>RStudio (.dmg -> .app)</li>
     </ul>
