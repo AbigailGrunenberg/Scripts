@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#R intallation for Intell and Mac chips
+#R intallation for Intel and Mac chips
 
 Applications=(/Applications/*)
 AppName="R.app"
