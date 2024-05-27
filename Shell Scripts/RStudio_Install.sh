@@ -17,7 +17,7 @@ OS=$(sw_vers -productVersion)
 if [[ $OS == *"12"* || $OS == *"13"* || $OS == *"14"* ]]
     then
         #continue with installation
-        echo "Starting Installtion"
+        echo "Starting Installation"
         URL="https://download1.rstudio.org/electron/macos/RStudio-2024.04.1-748.dmg"
         Location=/Users/Shared/RStudio-2024.04.1-748.dmg
         curl -Ls -o $Location $URL 
