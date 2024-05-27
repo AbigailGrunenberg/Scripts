@@ -10,6 +10,7 @@
 Applications=(/Applications/*)
 AppName="Dropbox.app"
 URL="https://www.dropbox.com/download?os=mac"
+Location="/Users/Shared/DropboxInstaller.dmg"
 
 
 if [[ ${Applications[@]} =~ "/Applications/$AppName" ]]
@@ -17,8 +18,8 @@ if [[ ${Applications[@]} =~ "/Applications/$AppName" ]]
     osascript -e 'display alert "App Installation" message "Dropbox app already installed on device, terminiating installation."'
     exit 0
 else   
-    curl -Ls -o /Users/Shared/DropboxInstaller.dmg $URL
-    hdiutil attach /Users/Shared/DropboxInstaller.dmg
+    curl -Ls -o $Location $URL
+    hdiutil attach $Location
 
     # install app
     cp -rf /Volumes/Dropbox.app /Applications
@@ -26,6 +27,6 @@ else
     open -a /Application/Dropbox.app
 
     #unmount
-    hdiutil detach /Users/Shared/DropboxInstaller.dmg
+    hdiutil detach $Location
     
 fi 
