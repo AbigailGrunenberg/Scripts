@@ -1,10 +1,11 @@
 #!/bin/bash
 
+#Code from: https://github.com/TheJumpCloud/support/blob/master/PowerShell/JumpCloud%20Commands%20Gallery/Mac%20Commands/Application%20Installs/Mac%20-%20Install%20Chrome%20DMG.md
+
 # DMG Download URL
 
 DownloadUrl="https://www.mozilla.org/en-CA/firefox/download/thanks/"
 
-### Modify below this line at your own risk!
 
 # Locate DMG Download Link From URL
 
