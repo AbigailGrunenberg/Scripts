@@ -72,11 +72,9 @@ if ($OS.Contains("10") -or $OS.Contains("11")) {
     $URL="https://download1.rstudio.org/electron/windows/RStudio-2024.04.1-748.exe"
 }
 else {
-    $URL=""
+    msg console /server:localhost "No current download for OS system. Cancelling installation."
+    exit
 }
-
-
-$URL="https://cran.r-project.org/bin/windows/base/R-4.4.0-win.exe"
 
 # list of administrator names
 $Admins=net localGroup Administrators
@@ -193,7 +191,7 @@ function Main {
         #open and run R installer
         & $Location 
     }
-
+    
 }
 
 #Start installation
