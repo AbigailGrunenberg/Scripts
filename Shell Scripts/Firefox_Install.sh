@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#Dropbox Installation
+#Firefox Installation
 #will need to test on better iMac 
 
 #referenced from: https://apple.stackexchange.com/questions/73926/is-there-a-command-to-install-a-dmg and 
 #https://github.com/TheJumpCloud/support/blob/master/PowerShell/JumpCloud%20Commands%20Gallery/Mac%20Commands/Application%20Installs/Mac%20-%20Install%20Chrome%20DMG.md
 
-#check if Dropbox is already installed
+#check if Firefox is already installed
 #list of applications currently on Mac
 Applications=(/Applications/*)
 AppName="Firefox.app"
@@ -15,7 +15,7 @@ URL="https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US"
 
 if [[ ${Applications[@]} =~ "/Applications/$AppName" ]]
     then
-    osascript -e 'display alert "App Installation" message "Dropbox app already installed on device, terminiating installation."'
+    osascript -e 'display alert "App Installation" message "Firefox app already installed on device, terminiating installation."'
     exit 0
 else   
     #continue with installation
