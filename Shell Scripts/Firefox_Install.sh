@@ -11,7 +11,7 @@
 Applications=(/Applications/*)
 AppName="Firefox.app"
 
-URL="https://www.mozilla.org/en-CA/firefox/download/thanks/"
+URL="https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US"
 
 if [[ ${Applications[@]} =~ "/Applications/$AppName" ]]
     then
