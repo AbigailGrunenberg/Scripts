@@ -1,6 +1,18 @@
 #activation of KMS batch file for Windows 11
 
-# list of administrator names
+#Check Windows OS version
+$OS=systeminfo | findstr /B /C:"OS Name"
+$URL="" 
+
+if $OS.Contains("11")) {
+    msg console /server:localhost "Starting Windows 11 activation."
+}
+else {
+    msg console /server:localhost "Device not on Windows 11. Cancelling installation."
+    exit
+}
+
+#list of administrator names
 $Admins=net localGroup Administrators
 
 #List of user objects
