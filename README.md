@@ -10,16 +10,18 @@
         <li>Download and install from an FTP server</li>
         <li>Cisco Secure Endpoint (.exe)</li>
         <li>R (.exe)</li>
-        <li>RStudio (.exe) WIP</li>
+        <li>RStudio (.exe)</li>
     </ul>
 
 <h3>Mac: </h3> Shell Script<br>
     <ul style="list-style-type: disc">
         <li>Zoom (.pkg)</li>
         <li>Chrome (.pkg)</li>
-        <li>Cisco Secure Endpoint (.dmg -> .pkg)</li>
+        <li>Cisco Secure Endpoint (.dmg -> .pkg) WIP</li>
         <li>Spotify (.zip -> .app)</li>
-        <li>Dropbox (.dmg -> .app)</li>
+        <li>Dropbox (.dmg -> .app) WIP</li>
         <li>R (.pkg)</li>
-        <li>RStudio (.dmg -> .app)</li>
+        <li>RStudio (.dmg -> .app) WIP</li>
+        <li>Firefox (.dmg -> .app)</li>
+        <li>Adobe Creative Cloud (.dmg -> .app) WIP</li>
     </ul>
