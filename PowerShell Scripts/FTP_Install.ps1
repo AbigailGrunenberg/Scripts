@@ -68,7 +68,6 @@ function Installed? {
 #check if Dropbox is already installed
 Installed?
 
-
 # list of administrator names
 $Admins=net localGroup Administrators
 
@@ -153,7 +152,6 @@ function InBoth {
       Write-Host $listBoth
 }
 
-
 #place holder to store where file is.
 $LocalLocation = ""
 
@@ -182,7 +180,6 @@ function FindLocation {
         # Location where installer will be installed and run from
         $LocalLocation=$User + "\Downloads\" + $AppName + $FileType
     }
-
 }
 
 # Find location to put download
@@ -208,7 +205,6 @@ function Get-FTPFile {
         [Parameter(Mandatory=$true)]
         [string] $RemoteLocation
     )
-
 
     # Create a FTPWebRequest
     $FTPRequest = [System.Net.FtpWebRequest]::Create($RemoteLocation)
