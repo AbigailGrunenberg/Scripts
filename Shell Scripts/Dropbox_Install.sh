@@ -25,24 +25,24 @@ else
     #Create Temp Folder
     DATE=$(date '+%Y-%m-%d-%H-%M-%S')
     TempFolder="Download-$DATE"
-    Location="/tmp/$TempFolder"
-    mkdir /tmp/$TempFolder
+    Location=/Users/Shared/$TempFolder
+    mkdir $Location
     cd $Location
 
     # Download File into Temp Folder
-    curl -s -o /Users/Shared/DropboxInstaller.dmg $URL
+    curl -s -o "$Location/DropboxInstaller.dmg" $URL
 
     # Capture name of Download File
     DownloadFile="$(ls)"
 
     echo "Downloaded $DownloadFile to $Location"
 
-    hdiutil attach /Volumes/"Creative Cloud Installer"
-
+    hdiutil attach /Volumes/"Dropbox Installer"
+3
     # install app
-    cp -rf /Volumes/"Creative Cloud Installer"/"Creative Cloud Installer.app" /Applications
+    cp -rf /Volumes/'Dropbox Installer'/'Dropbox Installer.app' /Applications
 
-    hdiutil detach /Volumes/"Creative Cloud Installer"
+    hdiutil detach /Volumes/"Dropbox Installer"
 
     #remove temp folder
     rm -r $Location
