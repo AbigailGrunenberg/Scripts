@@ -19,7 +19,7 @@ else
     echo "Starting Installation"
     URL="https://www.dropbox.com/download?os=mac"
 
-    #Create Temp Folder
+    #Create Temp Folder (going to remove later)
     DATE=$(date '+%Y-%m-%d-%H-%M-%S')
     TempFolder="Download-$DATE"
     Location=/Users/Shared/$TempFolder
@@ -34,11 +34,11 @@ else
 
     echo "Downloaded $DownloadFile to $Location"
 
-    #attached to volume 
-    hdiutil attach /Volumes/"Dropbox Installer"
-
+    # go to volumes folder and open dmg file
+    cd /Volumes
+    open $Location
     # install app
-    cd /Volumes/'Dropbox Installer'
+    cd $Location
     open 'Dropbox Installer'
 
     # install app
